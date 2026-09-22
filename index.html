@@ -1,384 +1,400 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Painel do Indicador - AutônomoFácil</title>
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#2e7d32">
-<style>
-:root {
---primary: #2e7d32;
---primary-light: #4caf50;
---bg: #f4f6f8;
---card-bg: #ffffff;
---text: #333333;
-}
-body {
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background-color: var(--bg);
-color: var(--text);
-margin: 0;
-padding: 15px;
-}
-.container {
-max-width: 650px;
-margin: 0 auto;
-}
-.card {
-background: var(--card-bg);
-border-radius: 12px;
-padding: 20px;
-margin-bottom: 20px;
-box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-h1, h2 { color: var(--primary); margin-top: 0; }
-.info-box {
-background: #e8f5e9;
-border-left: 5px solid var(--primary-light);
-padding: 14px;
-margin-bottom: 15px;
-border-radius: 4px;
-font-size: 14px;
-line-height: 1.5;
-}
-button {
-background-color: var(--primary);
-color: white;
-border: none;
-padding: 12px 20px;
-border-radius: 6px;
-font-size: 16px;
-cursor: pointer;
-width: 100%;
-font-weight: bold;
-margin-top: 10px;
-}
-button:hover { background-color: #1b5e20; }
-button:disabled {
-background-color: #cccccc;
-cursor: not-allowed;
-}
-input {
-width: 100%;
-padding: 10px;
-margin: 8px 0 15px 0;
-border: 1px solid #ccc;
-border-radius: 6px;
-box-sizing: border-box;
-}
-.pix-box {
-background: #fff8e1;
-border: 1px dashed #ffa000;
-padding: 12px;
-border-radius: 6px;
-text-align: center;
-font-weight: bold;
-margin-bottom: 15px;
-}
-.historico-item {
-background: #fafafa;
-border: 1px solid #eee;
-padding: 10px;
-margin-bottom: 8px;
-border-radius: 6px;
-font-size: 14px;
-}
-/* Estilos do Modal */
-.modal {
-display: none;
-position: fixed;
-z-index: 1000;
-left: 0;
-top: 0;
-width: 100%;
-height: 100%;
-background-color: rgba(0,0,0,0.5);
-}
-.modal-content {
-background-color: #fff;
-margin: 10% auto;
-padding: 20px;
-border-radius: 10px;
-width: 90%;
-max-width: 600px;
-max-height: 80vh;
-overflow-y: auto;
-}
-.close {
-color: #aaa;
-float: right;
-font-size: 28px;
-font-weight: bold;
-cursor: pointer;
-}
-.close:hover { color: #000; }
-.btn-modal {
-background-color: #0277bd;
-margin-bottom: 15px;
-}
-.btn-modal:hover { background-color: #01579b; }
-.audio-controls {
-display: flex;
-gap: 10px;
-margin-top: 15px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Indicador - AutônomoFácil</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2e7d32">
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --bg: #f4f6f8;
+            --card-bg: #ffffff;
+            --text: #333333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 15px;
+        }
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        h1, h2 { color: var(--primary); margin-top: 0; }
+        .info-box {
+            background: #e8f5e9;
+            border-left: 5px solid var(--primary-light);
+            padding: 14px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        button:hover { background-color: #1b5e20; }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .pix-box {
+            background: #fff8e1;
+            border: 1px dashed #ffa000;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .historico-item {
+            background: #fafafa;
+            border: 1px solid #eee;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        /* Estilos do Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close:hover { color: #000; }
+        .btn-modal {
+            background-color: #0277bd;
+            margin-bottom: 15px;
+        }
+        .btn-modal:hover { background-color: #01579b; }
+        .audio-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
+    
+    <!-- Botão para abrir o Modal de Apresentação -->
+    <button type="button" class="btn-modal" id="btn-abrir-modal">📖 O que é o AutônomoFácil? (Ouça / Leia)</button>
 
-<!-- Botão para abrir o Modal de Apresentação -->
-<button class="btn-modal" onclick="abrirModal()">📖 O que é o AutônomoFácil? (Ouça / Leia)</button>
+    <div class="card">
+        <h1>Painel do Indicador 🚀</h1>
+        
+        <div class="info-box">
+            🎯 <strong>Indique o AutônomoFácil.</strong> Sua Meta é <strong>50 Indicações</strong>. Seja o Primeiro(a) a Alcançar e Ganhe <strong>R$ 500,00!!</strong><br><br>
+            📌 <em>Mas, mesmo que alguém Alcance antes de você, o AutônomoFácil pagará sua Meta Alcançada um dia útil depois que o Primeiro Atingir sua Meta.</em>
+        </div>
+        
+        <div class="pix-box">
+            🔑 Chave Pix da Empresa (para o cliente pagar):<br>
+            <span style="color: #d32f2f; font-size: 18px;">gilinbrazil@gmail.com</span>
+        </div>
+    </div>
 
-<div class="card">
-<h1>Painel do Indicador 🚀</h1>
+    <!-- Cadastro do Indicador -->
+    <div class="card" style="background: #eef9ff; border: 1px solid #b3e5fc;">
+        <h2>👤 Meus Dados de Indicador(a)</h2>
+        <label>Seu Nome Completo:</label>
+        <input type="text" id="ind-nome" placeholder="Ex: Maria da Silva">
 
-<div class="info-box">
-🎯 <strong>Indique o AutônomoFácil.</strong> Sua Meta é <strong>50 Indicações</strong>. Seja o Primeiro(a) a Alcançar e Ganhe <strong>R$` 500,00!!</strong><br><br>
-📌 <em>Mas, mesmo que alguém Alcance antes de você, o AutônomoFácil pagará sua Meta Alcançada um dia útil depois que o Primeiro Atingir sua Meta.</em>
-</div>
+        <label>Seu WhatsApp / Contato:</label>
+        <input type="text" id="ind-contato" placeholder="Ex: (66) 99999-9999">
 
-<div class="pix-box">
-🔑 Chave Pix da Empresa (para o cliente pagar):<br>
-<span style="color: #d32f2f; font-size: 18px;">gilinbrazil@gmail.com</span>
-</div>
-</div>
+        <label>Sua Chave Pix para Recebimento:</label>
+        <input type="text" id="ind-pix" placeholder="Ex: CPF, E-mail ou Celular">
+    </div>
 
-<!-- Cadastro do Indicador -->
-<div class="card" style="background: #eef9ff; border: 1px solid #b3e5fc;">
-<h2>👤 Meus Dados de Indicador(a)</h2>
-<label>Seu Nome Completo:</label>
-<input type="text" id="ind-nome" placeholder="Ex: Maria da Silva" oninput="salvarDadosIndicador()">
+    <!-- Registro de Nova Indicação -->
+    <div class="card">
+        <h2>➕ Registrar Nova Indicação Concluída</h2>
+        <form id="form-indicacao">
+            <label>Nome do Indicado (Cliente):</label>
+            <input type="text" id="nome-indicado" placeholder="Ex: João da Silva" required>
 
-<label>Seu WhatsApp / Contato:</label>
-<input type="text" id="ind-contato" placeholder="Ex: (66) 99999-9999" oninput="salvarDadosIndicador()">
+            <label>Profissão do Indicado:</label>
+            <input type="text" id="profissao-indicado" placeholder="Ex: Cabeleireiro, Jardineiro, Mecânico..." required>
 
-<label>Sua Chave Pix para Recebimento:</label>
-<input type="text" id="ind-pix" placeholder="Ex: CPF, E-mail ou Celular" oninput="salvarDadosIndicador()">
-</div>
+            <label>Titular do Pix em que o cliente fez o pagamento:</label>
+            <input type="text" id="titular-pix" placeholder="Nome exato de quem pagou os R$ 79" required>
 
-<!-- Registro de Nova Indicação -->
-<div class="card">
-<h2>➕ Registrar Nova Indicação Concluída</h2>
-<form id="form-indicacao" onsubmit="adicionarIndicacao(event)">
-<label>Nome do Indicado (Cliente):</label>
-<input type="text" id="nome-indicado" placeholder="Ex: João da Silva" required>
+            <label>Data do Pagamento:</label>
+            <input type="date" id="data-pagamento" required>
 
-<label>Profissão do Indicado:</label>
-<input type="text" id="profissao-indicado" placeholder="Ex: Cabeleireiro, Jardineiro, Mecânico..." required>
+            <label>Telefone / Contato do Indicado:</label>
+            <input type="text" id="tel-indicado" placeholder="Ex: (66) 98888-8888" required>
 
-<label>Titular do Pix em que o cliente fez o pagamento:</label>
-<input type="text" id="titular-pix" placeholder="Nome exato de quem pagou os R`$ 79" required>
+            <button type="submit">💾 Salvar no Meu Placar</button>
+        </form>
+    </div>
 
-<label>Data do Pagamento:</label>
-<input type="date" id="data-pagamento" required>
+    <!-- Placar e Monitoramento -->
+    <div class="card">
+        <h2>📊 Meu Placar e Monitoramento</h2>
+        <p>Indicações realizadas: <strong id="contador-total" style="font-size: 20px; color: var(--primary);">0</strong> / 50</p>
+        <p>Faltam para a meta: <strong id="faltam-meta" style="font-size: 18px; color: #d32f2f;">50</strong> indicações</p>
+        <p>Valor já conquistado: <strong id="valor-total" style="font-size: 20px; color: #2e7d32;">R$ 0,00</strong> (R$ 10 por indicação)</p>
+        
+        <div id="lista-indicacoes" style="margin-top: 15px;">
+            <p style="color: #777; font-style: italic;">Nenhuma indicação cadastrada ainda.</p>
+        </div>
 
-<label>Telefone / Contato do Indicado:</label>
-<input type="text" id="tel-indicado" placeholder="Ex: (66) 98888-8888" required>
-
-<button type="submit">💾 Salvar no Meu Placar</button>
-</form>
-</div>
-
-<!-- Placar e Monitoramento -->
-<div class="card">
-<h2>📊 Meu Placar e Monitoramento</h2>
-<p>Indicações realizadas: <strong id="contador-total" style="font-size: 20px; color: var(--primary);">0</strong> / 50</p>
-<p>Faltam para a meta: <strong id="faltam-meta" style="font-size: 18px; color: #d32f2f;">50</strong> indicações</p>
-<p>Valor já conquistado: <strong id="valor-total" style="font-size: 20px; color: #2e7d32;">R
-
- 10 por indicação)</p>
-
-<div id="lista-indicacoes" style="margin-top: 15px;">
-<p style="color: #777; font-style: italic;">Nenhuma indicação cadastrada ainda.</p>
-</div>
-
-<button onclick="enviarParaWhatsApp()" style="background-color: #25d366; margin-top: 20px;">💬 Enviar Comprovantes / Relatório para o WhatsApp (Gilberto)</button>
-
-<!-- Botão do App que só é liberado após enviar para o WhatsApp -->
-<div style="margin-top: 15px; text-align: center;">
-<a id="link-app-bloqueado" href="#" target="_blank" style="pointer-events: none;">
-<button id="btn-acessar-app" disabled style="background-color: #9e9e9e;">🔒 Acessar o AutônomoFácil (Aguardando Envio)</button>
-</a>
-<small id="aviso-liberacao" style="display: block; color: #d32f2f; margin-top: 5px;">* Este botão será liberado assim que você enviar o relatório para o WhatsApp do Gilberto.</small>
-</div>
-</div>
+        <button type="button" id="btn-whatsapp" style="background-color: #25d366; margin-top: 20px;">💬 Enviar Comprovantes / Relatório para o WhatsApp (Gilberto)</button>
+        
+        <!-- Botão do App que só é liberado após enviar para o WhatsApp -->
+        <div style="margin-top: 15px; text-align: center;">
+            <a id="link-app-bloqueado" href="#" target="_blank" style="pointer-events: none;">
+                <button type="button" id="btn-acessar-app" disabled style="background-color: #9e9e9e;">🔒 Acessar o AutônomoFácil (Aguardando Envio)</button>
+            </a>
+            <small id="aviso-liberacao" style="display: block; color: #d32f2f; margin-top: 5px;">* Este botão será liberado assim que você enviar o relatório para o WhatsApp do Gilberto.</small>
+        </div>
+    </div>
 </div>
 
 <!-- MODAL DE EXPLICAÇÃO DO AUTÔNOMOFÁCIL -->
 <div id="modalExplicacao" class="modal">
-<div class="modal-content">
-<span class="close" onclick="fecharModal()">×</span>
-<h2>O que é o AutônomoFácil?</h2>
-<p style="line-height: 1.6;">
-O <strong>AutônomoFácil</strong> reside na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma.
-</p>
-<ul style="line-height: 1.6;">
-<li><strong>Conexão Direta e Agilidade:</strong> Elimina intermediários tradicionais, permitindo que o cliente encontre rapidamente o profissional qualificado mais próximo com apenas alguns cliques.</li>
-<li><strong>Visibilidade para Profissionais Locais:</strong> Oferece vitrine digital para prestadores de serviços — desde categorias gerais até setores específicos como o agronegócio e maquinário pesado —, facilitando a captação de clientes.</li>
-<li><strong>Organização Setorial:</strong> Estrutura e categoriza uma enorme variedade de profissões, facilitando a navegação e a busca exata pela solução desejada.</li>
-<li><strong>Formalização e Oportunidade:</strong> Permite que trabalhadores autônomos divulguem seu status (seja "Disponível" ou "Em breve"), criando uma rede de suporte econômico para a comunidade e o mercado regional.</li>
-</ul>
-<p style="background: #f1f8e9; padding: 10px; border-radius: 6px; font-size: 13px;">
-🤟 <em>Nota de Acessibilidade: Conteúdo adaptado para tradução em Libras para total inclusão na comunidade.</em>
-</p>
-<div class="audio-controls">
-<button onclick="ouvirTexto()" style="background-color: #43a047;">🔊 Ouvir Explicação</button>
-<button onclick="pararAudio()" style="background-color: #e53935;">⏹️ Parar Áudio</button>
-</div>
-</div>
+    <div class="modal-content">
+        <span class="close" id="btn-fechar-modal">&times;</span>
+        <h2>O que é o AutônomoFácil?</h2>
+        <p style="line-height: 1.6;">
+            O <strong>AutônomoFácil</strong> reside na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma.
+        </p>
+        <ul style="line-height: 1.6;">
+            <li><strong>Conexão Direta e Agilidade:</strong> Elimina intermediários tradicionais, permitindo que o cliente encontre rapidamente o profissional qualificado mais próximo com apenas alguns cliques.</li>
+            <li><strong>Visibilidade para Profissionais Locais:</strong> Oferece vitrine digital para prestadores de serviços — desde categorias gerais até setores específicos como o agronegócio e maquinário pesado —, facilitando a captação de clientes.</li>
+            <li><strong>Organização Setorial:</strong> Estrutura e categoriza uma enorme variedade de profissões, facilitando a navegação e a busca exata pela solução desejada.</li>
+            <li><strong>Formalização e Oportunidade:</strong> Permite que trabalhadores autônomos divulguem seu status (seja "Disponível" ou "Em breve"), criando uma rede de suporte econômico para a comunidade e o mercado regional.</li>
+        </ul>
+        <p style="background: #f1f8e9; padding: 10px; border-radius: 6px; font-size: 13px;">
+            🤟 <em>Nota de Acessibilidade: Conteúdo adaptado para tradução em Libras para total inclusão na comunidade.</em>
+        </p>
+        <div class="audio-controls">
+            <button type="button" id="btn-ouvir" style="background-color: #43a047;">🔊 Ouvir Explicação</button>
+            <button type="button" id="btn-parar" style="background-color: #e53935;">⏹️ Parar Áudio</button>
+        </div>
+    </div>
 </div>
 
 <script>
-// Registro do Service Worker para o PWA funcionar sem erros 404
-if ('serviceWorker' in navigator) {
-window.addEventListener('load', () => {
-navigator.serviceWorker.register('./sw.js')
-.then(() => console.log('Service Worker registrado com sucesso!'))
-.catch((err) => console.log('Erro ao registrar Service Worker:', err));
-});
-}
+    // Garante que o script só execute após a página carregar 100%
+    document.addEventListener('DOMContentLoaded', () => {
+        
+        // Registro do Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').catch(() => {});
+        }
 
-// Recupera dados salvos no navegador
-let minhasIndicacoes = JSON.parse(localStorage.getItem('autonomo_indicacoes')) || [];
-let relatorioEnviado = JSON.parse(localStorage.getItem('relatorio_enviado')) || false;
+        // Elementos da interface
+        let minhasIndicacoes = JSON.parse(localStorage.getItem('autonomo_indicacoes')) || [];
+        let relatorioEnviado = JSON.parse(localStorage.getItem('relatorio_enviado')) || false;
+        
+        const inputNome = document.getElementById('ind-nome');
+        const inputContato = document.getElementById('ind-contato');
+        const inputPix = document.getElementById('ind-pix');
 
-document.getElementById('ind-nome').value = localStorage.getItem('ind_nome') || '';
-document.getElementById('ind-contato').value = localStorage.getItem('ind_contato') || '';
-document.getElementById('ind-pix').value = localStorage.getItem('ind_pix') || '';
+        inputNome.value = localStorage.getItem('ind_nome') || '';
+        inputContato.value = localStorage.getItem('ind_contato') || '';
+        inputPix.value = localStorage.getItem('ind_pix') || '';
 
-renderizarPlacar();
-atualizarEstadoBotaoApp();
+        // Eventos para salvar dados do indicador automaticamente
+        [inputNome, inputContato, inputPix].forEach(input => {
+            input.addEventListener('input', () => {
+                localStorage.setItem('ind_nome', inputNome.value);
+                localStorage.setItem('ind_contato', inputContato.value);
+                localStorage.setItem('ind_pix', inputPix.value);
+            });
+        });
 
-function salvarDadosIndicador() {
-localStorage.setItem('ind_nome', document.getElementById('ind-nome').value);
-localStorage.setItem('ind_contato', document.getElementById('ind-contato').value);
-localStorage.setItem('ind_pix', document.getElementById('ind-pix').value);
-}
+        renderizarPlacar();
+        atualizarEstadoBotaoApp();
 
-function adicionarIndicacao(event) {
-event.preventDefault();
+        // Cadastro de indicação
+        document.getElementById('form-indicacao').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const novaIndicacao = {
+                nome: document.getElementById('nome-indicado').value,
+                profissao: document.getElementById('profissao-indicado').value,
+                titularPix: document.getElementById('titular-pix').value,
+                data: document.getElementById('data-pagamento').value,
+                tel: document.getElementById('tel-indicado').value
+            };
 
-const novaIndicacao = {
-nome: document.getElementById('nome-indicado').value,
-profissao: document.getElementById('profissao-indicado').value,
-titularPix: document.getElementById('titular-pix').value,
-data: document.getElementById('data-pagamento').value,
-tel: document.getElementById('tel-indicado').value
-};
+            minhasIndicacoes.push(novaIndicacao);
+            localStorage.setItem('autonomo_indicacoes', JSON.stringify(minhasIndicacoes));
 
-minhasIndicacoes.push(novaIndicacao);
-localStorage.setItem('autonomo_indicacoes', JSON.stringify(minhasIndicacoes));
+            e.target.reset();
+            renderizarPlacar();
+            alert('Indicação registrada com sucesso no seu placar!');
+        });
 
-document.getElementById('form-indicacao').reset();
-renderizarPlacar();
-alert('Indicação registrada com sucesso no seu placar!');
-}
+        function renderizarPlacar() {
+            const lista = document.getElementById('lista-indicacoes');
+            const contador = document.getElementById('contador-total');
+            const faltam = document.getElementById('faltam-meta');
+            const valor = document.getElementById('valor-total');
 
-function renderizarPlacar() {
-const lista = document.getElementById('lista-indicacoes');
-const contador = document.getElementById('contador-total');
-const faltam = document.getElementById('faltam-meta');
-const valor = document.getElementById('valor-total');
+            const total = minhasIndicacoes.length;
+            const faltamMeta = Math.max(0, 50 - total);
 
-const total = minhasIndicacoes.length;
-const faltamMeta = Math.max(0, 50 - total);
+            contador.innerText = total;
+            faltam.innerText = faltamMeta;
+            valor.innerText = `R$ ${total * 10},00`;
 
-contador.innerText = total;
-faltam.innerText = faltamMeta;
-valor.innerText = R$${total * 10},00;
+            if (total === 0) {
+                lista.innerHTML = '<p style="color: #777; font-style: italic;">Nenhuma indicação cadastrada ainda.</p>';
+                return;
+            }
 
-if (total === 0) {
-lista.innerHTML = '<p style="color: #777; font-style: italic;">Nenhuma indicação cadastrada ainda.</p>';
-return;
-}
+            let html = '';
+            minhasIndicacoes.forEach((item, index) => {
+                html += `
+                    <div class="historico-item">
+                        <strong>${index + 1}. ${item.nome}</strong> (${item.profissao})<br>
+                        <small>📅 Data: ${item.data} | 💳 Titular Pix: <strong>${item.titularPix}</strong> | 📞 Contato: ${item.tel}</small>
+                    </div>
+                `;
+            });
+            lista.innerHTML = html;
+        }
 
-let html = '';
-minhasIndicacoes.forEach((item, index) => {
-html += &lt;div class="historico-item"&gt; &lt;strong&gt;${index + 1}. ${item.nome}&lt;/strong&gt; (${item.profissao})<br>
-<small>📅 Data: ${item.data} | 💳 Titular Pix: &lt;strong&gt;${item.titularPix}</strong> | 📞 Contato: ${item.tel}&lt;/small&gt; &lt;/div&gt;;
-});
-lista.innerHTML = html;
-}
+        // Botão WhatsApp
+        document.getElementById('btn-whatsapp').addEventListener('click', () => {
+            const nomeInd = inputNome.value || 'Não informado';
+            const contatoInd = inputContato.value || 'Não informado';
+            const pixInd = inputPix.value || 'Não informado';
+            const total = minhasIndicacoes.length;
+            const valorTotal = total * 10;
 
-function enviarParaWhatsApp() {
-const nomeInd = document.getElementById('ind-nome').value || 'Não informado';
-const contatoInd = document.getElementById('ind-contato').value || 'Não informado';
-const pixInd = document.getElementById('ind-pix').value || 'Não informado';
-const total = minhasIndicacoes.length;
-const valorTotal = total * 10;
+            let mensagem = `*RELATÓRIO DE INDICAÇÕES - AUTÔNOMOFÁCIL*%0A`;
+            mensagem += `👤 Indicador(a): ${nomeInd}%0A`;
+            mensagem += `📞 Contato: ${contatoInd}%0A`;
+            mensagem += `🔑 Pix: ${pixInd}%0A`;
+            mensagem += `📊 Total de Indicações: ${total}/50 (Valor: R$ ${valorTotal},00)%0A%0A`;
+            mensagem += `*Lista de Clientes Indicados:*%0A`;
 
-let mensagem = *RELATÓRIO DE INDICAÇÕES - AUTÔNOMOFÁCIL*%0A;
-mensagem += 👤 Indicador(a): ${nomeInd}%0A; mensagem +=📞 Contato: ${contatoInd}%0A;
-mensagem += 🔑 Pix: ${pixInd}%0A; mensagem +=📊 Total de Indicações: ${total}/50 (Valor: R$${valorTotal},00)%0A%0A;
-mensagem += *Lista de Clientes Indicados:*%0A;
+            minhasIndicacoes.forEach((item, index) => {
+                mensagem += `${index + 1}. ${item.nome} | Profissão: ${item.profissao} | Pix Pago por: ${item.titularPix} | Data: ${item.data}%0A`;
+            });
 
-minhasIndicacoes.forEach((item, index) => {
-mensagem += ${index + 1}. ${item.nome} | Profissão: ${item.profissao} | Pix Pago por: ${item.titularPix} | Data: ${item.data}%0A`;
-});
+            relatorioEnviado = true;
+            localStorage.setItem('relatorio_enviado', JSON.stringify(true));
+            atualizarEstadoBotaoApp();
 
-// Marca como enviado e libera o botão do app
-relatorioEnviado = true;
-localStorage.setItem('relatorio_enviado', JSON.stringify(true));
-atualizarEstadoBotaoApp();
+            const url = `https://wa.me/5566984662186?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        });
 
-const url = https://wa.me/5566984662186?text=${encodeURIComponent(mensagem)}`;
-window.open(url, '_blank');
-}
+        function atualizarEstadoBotaoApp() {
+            const btn = document.getElementById('btn-acessar-app');
+            const link = document.getElementById('link-app-bloqueado');
+            const aviso = document.getElementById('aviso-liberacao');
 
-function atualizarEstadoBotaoApp() {
-const btn = document.getElementById('btn-acessar-app');
-const link = document.getElementById('link-app-bloqueado');
-const aviso = document.getElementById('aviso-liberacao');
+            if (relatorioEnviado) {
+                btn.disabled = false;
+                btn.style.backgroundColor = '#2e7d32';
+                btn.innerText = '🚀 Acessar o AutônomoFácil Agora!';
+                link.style.pointerEvents = 'auto';
+                link.href = 'https://escolateologicavance-debug.github.io/Aut-nomo.F-cil-1.0/';
+                aviso.style.color = '#2e7d32';
+                aviso.innerText = '✔ Relatório enviado! Acesso ao app liberado.';
+            } else {
+                btn.disabled = true;
+                btn.style.backgroundColor = '#9e9e9e';
+                btn.innerText = '🔒 Acessar o AutônomoFácil (Aguardando Envio)';
+                link.style.pointerEvents = 'none';
+                link.href = '#';
+                aviso.style.color = '#d32f2f';
+                aviso.innerText = '* Este botão será liberado assim que você enviar o relatório para o WhatsApp do Gilberto.';
+            }
+        }
 
-if (relatorioEnviado) {
-btn.disabled = false;
-btn.style.backgroundColor = '#2e7d32';
-btn.innerText = '🚀 Acessar o AutônomoFácil Agora!';
-link.style.pointerEvents = 'auto';
-link.href = 'https://escolateologicavance-debug.github.io/Aut-nomo.F-cil-1.0/';
-aviso.style.color = '#2e7d32';
-aviso.innerText = '✔ Relatório enviado! Acesso ao app liberado.';
-} else {
-btn.disabled = true;
-btn.style.backgroundColor = '#9e9e9e';
-btn.innerText = '🔒 Acessar o AutônomoFácil (Aguardando Envio)';
-link.style.pointerEvents = 'none';
-link.href = '#';
-aviso.style.color = '#d32f2f';
-aviso.innerText = '* Este botão será liberado assim que você enviar o relatório para o WhatsApp do Gilberto.';
-}
-}
+        // Funções do Modal
+        const modal = document.getElementById('modalExplicacao');
+        document.getElementById('btn-abrir-modal').addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+        document.getElementById('btn-fechar-modal').addEventListener('click', () => {
+            modal.style.display = 'none';
+            pararAudio();
+        });
 
-// Funções do Modal
-function abrirModal() {
-document.getElementById('modalExplicacao').style.display = 'block';
-}
-function fecharModal() {
-document.getElementById('modalExplicacao').style.display = 'none';
-pararAudio();
-}
+        // Síntese de Voz
+        document.getElementById('btn-ouvir').addEventListener('click', () => {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const texto = "O Autônomo Fácil consiste na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma. Elimina intermediários tradicionais, oferecendo vitrine digital para prestadores de serviços, estruturando profissões e criando uma rede de suporte econômico para a comunidade e o mercado regional.";
+                const utterance = new SpeechSynthesisUtterance(texto);
+                utterance.lang = 'pt-BR';
+                utterance.rate = 1.0;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Seu navegador não suporta leitura de áudio.');
+            }
+        });
 
-// Funções de Síntese de Voz
-function ouvirTexto() {
-if ('speechSynthesis' in window) {
-window.speechSynthesis.cancel();
-const texto = "O Autônomo Fácil consiste na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma. Elimina intermediários tradicionais, oferecendo vitrine digital para prestadores de serviços, estruturando profissões e criando uma rede de suporte econômico para a comunidade e o mercado regional.";
-const utterance = new SpeechSynthesisUtterance(texto);
-utterance.lang = 'pt-BR';
-utterance.rate = 1.0;
-window.speechSynthesis.speak(utterance);
-} else {
-alert('Seu navegador não suporta leitura de áudio.');
-}
-}
-function pararAudio() {
-if ('speechSynthesis' in window) {
-window.speechSynthesis.cancel();
-}
-}
+        document.getElementById('btn-parar').addEventListener('click', pararAudio);
+
+        function pararAudio() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+    });
 </script>
 
 </body>
