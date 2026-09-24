@@ -42,6 +42,15 @@
             font-size: 14px;
             line-height: 1.5;
         }
+        .fomento-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffa000;
+            padding: 14px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
         button {
             background-color: var(--primary);
             color: white;
@@ -146,12 +155,15 @@
         <h1>Painel do Indicador 🚀</h1>
         
         <div class="info-box">
-            🎯 <strong>Indique o AutônomoFácil.</strong> Sua Meta é <strong>50 Indicações</strong>. Seja o Primeiro(a) a Alcançar e Ganhe <strong>R$ 500,00!!</strong><br><br>
-            📌 <em>Mas, mesmo que alguém Alcance antes de você, o AutônomoFácil pagará sua Meta Alcançada um dia útil depois que o Primeiro Atingir sua Meta.</em>
+            🎯 <strong>Indique o AutônomoFácil.</strong> Anuidade de <strong>R$ 79,00</strong>. Sua Meta é alcançar <strong>50 Indicações</strong>.
+        </div>
+
+        <div class="fomento-box">
+            🏆 <strong>Desafio Fundo de Aporte de R$ 5.000,00:</strong> Dentre os mais de 500 afiliados, o <strong>primeiro</strong> a atingir a meta de 50 indicações confirmadas levará o <strong>Fundo de Aporte de R$ 5.000,00</strong> para fomento e estruturação do próprio negócio!
         </div>
         
         <div class="pix-box">
-            🔑 Chave Pix do AutônomoFácil (para o cliente pagar):<br>
+            🔑 Chave Pix do AutônomoFácil (para o cliente pagar a anuidade de R$ 79,00):<br>
             <span style="color: #d32f2f; font-size: 18px;">gilinbrazil@gmail.com</span>
         </div>
     </div>
@@ -179,8 +191,8 @@
             <label>Profissão do Indicado:</label>
             <input type="text" id="profissao-indicado" placeholder="Ex: Cabeleireiro, Jardineiro, Mecânico..." required>
 
-            <label>Titular do Pix em que o cliente fez o pagamento:</label>
-            <input type="text" id="titular-pix" placeholder="Nome exato de quem pagou os R$ 79" required>
+            <label>Titular do Pix em que o cliente fez o pagamento (R$ 79,00):</label>
+            <input type="text" id="titular-pix" placeholder="Nome exato de quem pagou" required>
 
             <label>Data do Pagamento:</label>
             <input type="date" id="data-pagamento" required>
@@ -196,8 +208,8 @@
     <div class="card">
         <h2>📊 Meu Placar e Monitoramento</h2>
         <p>Indicações realizadas: <strong id="contador-total" style="font-size: 20px; color: var(--primary);">0</strong> / 50</p>
-        <p>Faltam para a meta: <strong id="faltam-meta" style="font-size: 18px; color: #d32f2f;">50</strong> indicações</p>
-        <p>Valor já conquistado: <strong id="valor-total" style="font-size: 20px; color: #2e7d32;">R$ 0,00</strong> (R$ 10 por indicação)</p>
+        <p>Faltam para a meta do Desafio: <strong id="faltam-meta" style="font-size: 18px; color: #d32f2f;">50</strong> indicações</p>
+        <p>Valor já conquistado em comissões: <strong id="valor-total" style="font-size: 20px; color: #2e7d32;">R$ 0,00</strong> (R$ 10 por indicação)</p>
         
         <div id="lista-indicacoes" style="margin-top: 15px;">
             <p style="color: #777; font-style: italic;">Nenhuma indicação cadastrada ainda.</p>
@@ -221,7 +233,7 @@
         <span class="close" id="btn-fechar-modal">&times;</span>
         <h2>O que é o AutônomoFácil?</h2>
         <p style="line-height: 1.6;">
-            O <strong>AutônomoFácil</strong> reside na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma.
+            O <strong>AutônomoFácil</strong> consiste na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma.
         </p>
         <ul style="line-height: 1.6;">
             <li><strong>Conexão Direta e Agilidade:</strong> Elimina intermediários tradicionais, permitindo que o cliente encontre rapidamente o profissional qualificado mais próximo com apenas alguns cliques.</li>
@@ -230,7 +242,7 @@
             <li><strong>Formalização e Oportunidade:</strong> Permite que trabalhadores autônomos divulguem seu status (seja "Disponível" ou "Em breve"), criando uma rede de suporte econômico para a comunidade e o mercado regional.</li>
         </ul>
         <p style="background: #f1f8e9; padding: 10px; border-radius: 6px; font-size: 13px;">
-             <em>A Missão do O AutônomoFácil é um ecossistema digital inteligente projetado para conectar, validar e impulsionar prestadores de serviços autônomos em escala nacional, impulsionado por uma rede descentralizada de indicadores de campo.</em>
+             <em>A Missão do AutônomoFácil é um ecossistema digital inteligente projetado para conectar, validar e impulsionar prestadores de serviços autônomos em escala nacional, impulsionado por uma rede descentralizada de indicadores de campo.</em>
         </p>
         <div class="audio-controls">
             <button type="button" id="btn-ouvir" style="background-color: #43a047;">🔊 Ouvir Explicação</button>
@@ -379,8 +391,8 @@
             mensagem += `👤 Indicador(a): ${nomeInd}%0A`;
             mensagem += `📞 Contato: ${contatoInd}%0A`;
             mensagem += `🔑 Pix: ${pixInd}%0A`;
-            mensagem += `📊 Total de Indicações: ${total}/50 (Valor: R$ ${valorTotal},00)%0A%0A`;
-            mensagem += `*Lista de Clientes Indicados:*%0A`;
+            mensagem += `📊 Total de Indicações: ${total}/50 (Comissão: R$ ${valorTotal},00)%0A%0A`;
+            mensagem += `*Lista de Clientes Indicados (Anuidade R$ 79,00):*%0A`;
 
             minhasIndicacoes.forEach((item, index) => {
                 mensagem += `${index + 1}. ${item.nome} | Profissão: ${item.profissao} | Pix Pago por: ${item.titularPix} | Data: ${item.data}%0A`;
