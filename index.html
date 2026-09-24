@@ -155,11 +155,11 @@
         <h1>Painel do Indicador 🚀</h1>
         
         <div class="info-box">
-            🎯 <strong>Indique o AutônomoFácil.</strong> Anuidade de <strong>R$ 79,00</strong>. Sua Meta por Ciclo é alcançar <strong>50 Indicações</strong>.
+            🎯 <strong>Indique o AutônomoFácil.</strong> Anuidade de <strong>R$ 79,00</strong>. Sua Meta é alcançar <strong>50 Indicações</strong>.
         </div>
 
         <div class="fomento-box">
-            🏆 <strong>Desafio Contínuo de Fundo de Aporte de R$ 5.000,00 (Por Ciclos):</strong> Cada vez que a rede de indicadores atinge o fechamento de um lote completo de vendas sustentáveis, o sistema abre um novo ciclo de fomento de R$ 5.000,00. Assim, a competição e o incentivo nunca param e o caixa se mantém 100% equilibrado!
+            🏆 <strong>Fundo de Aporte Total de R$ 5.000,00 (Fracionado em 5 Lotes de R$ 1.000,00):</strong> Para manter a competição ativa e justa para todos os afiliados até atingir as 500 adesões gerais, o aporte de R$ 5 mil é dividido em 5 etapas de R$ 1.000,00 pagos a quem atingir as metas parciais primeiro.
         </div>
         
         <div class="pix-box">
@@ -207,8 +207,8 @@
     <!-- Placar e Monitoramento -->
     <div class="card">
         <h2>📊 Meu Placar e Monitoramento</h2>
-        <p>Indicações realizadas no Ciclo: <strong id="contador-total" style="font-size: 20px; color: var(--primary);">0</strong> / 50</p>
-        <p>Faltam para a meta do Ciclo Atual: <strong id="faltam-meta" style="font-size: 18px; color: #d32f2f;">50</strong> indicações</p>
+        <p>Indicações realizadas: <strong id="contador-total" style="font-size: 20px; color: var(--primary);">0</strong> / 50</p>
+        <p>Faltam para a meta: <strong id="faltam-meta" style="font-size: 18px; color: #d32f2f;">50</strong> indicações</p>
         <p>Valor já conquistado em comissões: <strong id="valor-total" style="font-size: 20px; color: #2e7d32;">R$ 0,00</strong> (R$ 10 por indicação)</p>
         
         <div id="lista-indicacoes" style="margin-top: 15px;">
@@ -288,7 +288,6 @@
             <li>📦 <strong>Motoboy / Mensageiro</strong></li>
             <li>🔑 <strong>Chaveiro</strong></li>
             <li>🛋️ <strong>Estofador (Reforma de Sofás)</strong></li>
-            <div></div>
         </ul>
 
         <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #666; font-weight: bold;">
@@ -402,7 +401,7 @@
             mensagem += `👤 Indicador(a): ${nomeInd}%0A`;
             mensagem += `📞 Contato: ${contatoInd}%0A`;
             mensagem += `🔑 Pix: ${pixInd}%0A`;
-            mensagem += `📊 Total de Indicações (Ciclo Atual): ${total}/50 (Comissão: R$ ${valorTotal},00)%0A%0A`;
+            mensagem += `📊 Total de Indicações: ${total}/50 (Comissão: R$ ${valorTotal},00)%0A%0A`;
             mensagem += `*Lista de Clientes Indicados (Anuidade R$ 79,00):*%0A`;
 
             minhasIndicacoes.forEach((item, index) => {
