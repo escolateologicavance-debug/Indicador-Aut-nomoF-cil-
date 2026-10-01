@@ -147,6 +147,14 @@
 
 <div class="container">
     
+    <!-- Cartaz da Promoção / Imagem da Moto no Cabeçalho -->
+    <div class="card" style="text-align: center; background: #fffde7; border: 2px dashed #ffa000;">
+        <img src="moto.png" alt="Moto 0km - AutonoMoto" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
+        <h2 style="color: #e65100; margin-bottom: 5px;">Campanha AutonoMoto 0Km 🏍️</h2>
+        <p style="font-size: 14px; color: #444; margin: 0 0 10px 0;">Indique e concorra a uma incrível Motocicleta 0km!</p>
+        <button onclick="abrirRegulamento()" style="background-color: #28a745; width: auto; padding: 8px 15px; font-size: 14px;">📄 Ler Regulamento da Moto 0km</button>
+    </div>
+
     <!-- Botões para abrir os Modais -->
     <button type="button" class="btn-modal" id="btn-abrir-modal">📖 O que é o AutônomoFácil? (Ouça / Leia)</button>
     <button type="button" onclick="abrirModalPrioritarios()" style="background-color: #d32f2f; margin-bottom: 15px;">🚨 Ver Profissionais Prioritários</button>
@@ -154,16 +162,10 @@
     <div class="card">
         <h1>Painel do Indicador 🚀</h1>
         
-        <div class="info-box">
-            🎯 <strong>Indique o AutônomoFácil.</strong> Anuidade de <strong>R$ 79,00</strong>. Sua Meta é alcançar <strong>50 Indicações</strong>.
-        </div>
-
         <div class="fomento-box">
-                    <div class="info-box">
             🎯 <strong>Indique o AutônomoFácil e receba MIL REAIS!</strong><br>
             Isso mesmo! Com 50 pessoas se afiliando ao AutônomoFácil você receberá: <strong>MIL REAIS no seu Pix!</strong>
         </div>
-
         
         <div class="pix-box">
             🔑 Chave Pix do AutônomoFácil (para o cliente pagar a anuidade de R$ 79,00):<br>
@@ -210,9 +212,8 @@
     <!-- Placar e Monitoramento -->
     <div class="card">
         <h2>📊 Meu Placar e Monitoramento</h2>
-        <p>Indicações realizadas: <strong id="contador-total" style="font-size: 20px; color: var(--primary);">0</strong> / 50</p>
-        <p>Faltam para a meta: <strong id="faltam-meta" style="font-size: 18px; color: #d32f2f;">50</strong> indicações</p>
-        <p>Valor já conquistado em comissões: <strong id="valor-total" style="font-size: 20px; color: #2e7d32;">R$ 0,00</strong> (R$ 10 por indicação)</p>
+        <p>Indicações realizadas: <strong id="contador-total" style="font-size: 20px; color: var(--primary);">0</strong></p>
+        <p>Valor já conquistado em comissões: <strong id="valor-total" style="font-size: 20px; color: #2e7d32;">R$ 0,00</strong> (R$ 20 por indicação)</p>
         
         <div id="lista-indicacoes" style="margin-top: 15px;">
             <p style="color: #777; font-style: italic;">Nenhuma indicação cadastrada ainda.</p>
@@ -300,10 +301,41 @@
         <button type="button" onclick="fecharModalPrioritarios()" style="background-color: #2e7d32; margin-top: 20px;">Entendido, Fechar</button>
     </div>
 </div>
-<!-- Botão para abrir o Regulamento -->
-<button onclick="abrirRegulamento()" style="background-color: #28a745; color: white; padding: 12px 20px; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; display: block; margin: 20px auto;">
-  📄 Ler Regulamento da Moto 0km
-</button>
+
+<!-- Estrutura do Modal do Regulamento -->
+<div id="modalRegulamento" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6);">
+  <div style="background-color: #fefefe; margin: 5% auto; padding: 25px; border: 1px solid #888; width: 90%; max-width: 600px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-family: sans-serif;">
+    
+    <!-- Cabeçalho do Modal -->
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
+      <h2 style="margin: 0; color: #333; font-size: 20px;">Regulamento: AutonoMoto 0Km</h2>
+      <span onclick="fecharRegulamento()" style="color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
+    </div>
+
+    <!-- Conteúdo do Regulamento -->
+    <div style="max-height: 400px; overflow-y: auto; text-align: left; font-size: 14px; color: #444; line-height: 1.6;">
+      <p><strong>1. DO OBJETIVO E NATUREZA:</strong> Campanha de incentivo por desempenho comercial (concurso de mérito por produtividade), destinada a estimular o crescimento da base do AutônomoFácil. Não se enquadra em loteria, dispensando autorização prévia (Lei Federal nº 5.768/71).</p>
+      
+      <p><strong>2. CRITÉRIOS DE PARTICIPAÇÃO:</strong><br>
+      - Estar cadastrado em uma das categorias do app AutônomoFácil.<br>
+      - Ser o primeiro indicador a atingir 500 cadastros efetivos através do link exclusivo.<br>
+      - Ser maior de 18 anos (ou representado por responsável legal).</p>
+      
+      <p><strong>3. PREMIAÇÃO E ENTREGA:</strong><br>
+      - 01 Motocicleta 125cc zero quilômetro.<br>
+      - Documentação emitida diretamente no nome do ganhador.<br>
+      - Entrega oficial realizada no município de Itanhangá - MT.</p>
+      
+      <p><strong>4. RESPALDO LEGAL:</strong> Fundamentado na livre iniciativa (Constituição Federal, Art. 170) e em promessas de recompensa por desempenho (Código Civil, Art. 854).</p>
+    </div>
+
+    <!-- Rodapé do Modal com Botão de Fechar -->
+    <div style="text-align: right; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
+      <button onclick="fecharRegulamento()" style="background-color: #6c757d; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Fechar</button>
+    </div>
+
+  </div>
+</div>
 
 <script>
     // Funções para abrir e fechar o modal de prioridades
@@ -312,6 +344,20 @@
     }
     function fecharModalPrioritarios() {
         document.getElementById('modalPrioritarios').style.display = 'none';
+    }
+
+    // Funções do Modal de Regulamento
+    function abrirRegulamento() {
+        document.getElementById('modalRegulamento').style.display = 'block';
+    }
+    function fecharRegulamento() {
+        document.getElementById('modalRegulamento').style.display = 'none';
+    }
+    window.onclick = function(event) {
+        var modalReg = document.getElementById('modalRegulamento');
+        if (event.target == modalReg) {
+            modalReg.style.display = "none";
+        }
     }
 
     // Garante que o script geral só execute após a página carregar 100%
@@ -369,15 +415,12 @@
         function renderizarPlacar() {
             const lista = document.getElementById('lista-indicacoes');
             const contador = document.getElementById('contador-total');
-            const faltam = document.getElementById('faltam-meta');
             const valor = document.getElementById('valor-total');
 
             const total = minhasIndicacoes.length;
-            const faltamMeta = Math.max(0, 50 - total);
 
             contador.innerText = total;
-            faltam.innerText = faltamMeta;
-            valor.innerText = `R$ ${total * 10},00`;
+            valor.innerText = `R$ ${total * 20},00`;
 
             if (total === 0) {
                 lista.innerHTML = '<p style="color: #777; font-style: italic;">Nenhuma indicação cadastrada ainda.</p>';
@@ -402,13 +445,13 @@
             const contatoInd = inputContato.value || 'Não informado';
             const pixInd = inputPix.value || 'Não informado';
             const total = minhasIndicacoes.length;
-            const valorTotal = total * 10;
+            const valorTotal = total * 20;
 
             let mensagem = `*RELATÓRIO DE INDICAÇÕES - AUTÔNOMOFÁCIL*%0A`;
             mensagem += `👤 Indicador(a): ${nomeInd}%0A`;
             mensagem += `📞 Contato: ${contatoInd}%0A`;
             mensagem += `🔑 Pix: ${pixInd}%0A`;
-            mensagem += `📊 Total de Indicações: ${total}/50 (Comissão: R$ ${valorTotal},00)%0A%0A`;
+            mensagem += `📊 Total de Indicações: ${total} (Comissão: R$ ${valorTotal},00)%0A%0A`;
             mensagem += `*Lista de Clientes Indicados (Anuidade R$ 79,00):*%0A`;
 
             minhasIndicacoes.forEach((item, index) => {
@@ -479,56 +522,6 @@
             }
         }
     });
-    <!-- Estrutura do Modal do Regulamento -->
-<div id="modalRegulamento" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6);">
-  <div style="background-color: #fefefe; margin: 5% auto; padding: 25px; border: 1px solid #888; width: 90%; max-width: 600px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-family: sans-serif;">
-    
-    <!-- Cabeçalho do Modal -->
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
-      <h2 style="margin: 0; color: #333; font-size: 20px;">Regulamento: AutonoMoto 0Km</h2>
-      <span onclick="fecharRegulamento()" style="color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-    </div>
-
-    <!-- Conteúdo do Regulamento -->
-    <div style="max-height: 400px; overflow-y: auto; text-align: left; font-size: 14px; color: #444; line-height: 1.6;">
-      <p><strong>1. DO OBJETIVO E NATUREZA:</strong> Campanha de incentivo por desempenho comercial (concurso de mérito por produtividade), destinada a estimular o crescimento da base do AutônomoFácil. Não se enquadra em loteria, dispensando autorização prévia (Lei Federal nº 5.768/71).</p>
-      
-      <p><strong>2. CRITÉRIOS DE PARTICIPAÇÃO:</strong><br>
-      - Estar cadastrado em uma das categorias do app AutônomoFácil.<br>
-      - Ser o primeiro indicador a atingir 500 cadastros efetivos através do link exclusivo.<br>
-      - Ser maior de 18 anos (ou representado por responsável legal).</p>
-      
-      <p><strong>3. PREMIAÇÃO E ENTREGA:</strong><br>
-      - 01 Motocicleta 125cc zero quilômetro.<br>
-      - Documentação emitida diretamente no nome do ganhador.<br>
-      - Entrega oficial realizada no município de Itanhangá - MT.</p>
-      
-      <p><strong>4. RESPALDO LEGAL:</strong> Fundamentado na livre iniciativa (Constituição Federal, Art. 170) e em promessas de recompensa por desempenho (Código Civil, Art. 854).</p>
-    </div>
-
-    <!-- Rodapé do Modal com Botão de Fechar -->
-    <div style="text-align: right; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
-      <button onclick="fecharRegulamento()" style="background-color: #6c757d; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Fechar</button>
-    </div>
-
-  </div>
-</div>
-
-<!-- Script para controlar a abertura e fechamento -->
-<script>
-  function abrirRegulamento() {
-    document.getElementById('modalRegulamento').style.display = 'block';
-  }
-  function fecharRegulamento() {
-    document.getElementById('modalRegulamento').style.display = 'none';
-  }
-  // Fecha se clicar fora da caixa branca
-  window.onclick = function(event) {
-    var modal = document.getElementById('modalRegulamento');
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
 </script>
 
 </body>
