@@ -147,8 +147,9 @@
 
 <div class="container">
     
-    <!-- Cabeçalho da Campanha Atualizado -->
+    <!-- Cabeçalho da Campanha com a Imagem moto.png -->
     <div class="card" style="text-align: center; background: #fffde7; border: 2px dashed #ffa000;">
+        <img src="moto.png" alt="Campanha AutônomoFácil" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
         <h2 style="color: #e65100; margin-bottom: 5px;">Campanha de Indicação Premiada 💸</h2>
         <p style="font-size: 15px; color: #444; font-weight: bold; margin: 0 0 10px 0;">Aderiu ao AutônomoFácil? Indique e Ganhe R$ 10,00 por Indicação Efetivada!</p>
         <button onclick="abrirRegulamento()" style="background-color: #28a745; width: auto; padding: 8px 15px; font-size: 14px;">📄 Ler Regras da Campanha</button>
@@ -438,7 +439,7 @@
             lista.innerHTML = html;
         }
 
-        // Botão WhatsApp
+        // Botão WhatsApp corrigido
         document.getElementById('btn-whatsapp').addEventListener('click', () => {
             const nomeInd = inputNome.value || 'Não informado';
             const contatoInd = inputContato.value || 'Não informado';
@@ -446,22 +447,22 @@
             const total = minhasIndicacoes.length;
             const valorTotal = total * 10;
 
-            let mensagem = `*RELATÓRIO DE INDICAÇÕES - AUTÔNOMOFÁCIL*%0A`;
-            mensagem += `👤 Indicador(a): ${nomeInd}%0A`;
-            mensagem += `📞 Contato: ${contatoInd}%0A`;
-            mensagem += `🔑 Pix: ${pixInd}%0A`;
-            mensagem += `📊 Total de Indicações: ${total} (Gratificação: R$ ${valorTotal},00 - R$ 10 por indicação)%0A%0A`;
-            mensagem += `*Lista de Clientes Indicados com Adesão Efetivada (Anuidade R$ 79,00):*%0A`;
+            let mensagem = "*RELATÓRIO DE INDICAÇÕES - AUTÔNOMOFÁCIL*\n";
+            mensagem += "👤 Indicador(a): " + nomeInd + "\n";
+            mensagem += "📞 Contato: " + contatoInd + "\n";
+            mensagem += "🔑 Pix: " + pixInd + "\n";
+            mensagem += "📊 Total de Indicações: " + total + " (Gratificação: R$ " + valorTotal + ",00 - R$ 10 por indicação)\n\n";
+            mensagem += "*Lista de Clientes Indicados com Adesão Efetivada (Anuidade R$ 79,00):*\n";
 
             minhasIndicacoes.forEach((item, index) => {
-                mensagem += `${index + 1}. ${item.nome} | Profissão: ${item.profissao} | Pix Pago por: ${item.titularPix} | Data: ${item.data}%0A`;
+                mensagem += (index + 1) + ". " + item.nome + " | Profissão: " + item.profissao + " | Pix Pago por: " + item.titularPix + " | Data: " + item.data + "\n";
             });
 
             relatorioEnviado = true;
             localStorage.setItem('relatorio_enviado', JSON.stringify(true));
             atualizarEstadoBotaoApp();
 
-            const url = `https://wa.me/5566984662186?text=${encodeURIComponent(mensagem)}`;
+            const url = "https://wa.me/5566984662186?text=" + encodeURIComponent(mensagem);
             window.open(url, '_blank');
         });
 
