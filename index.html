@@ -132,7 +132,6 @@
             gap: 10px;
             margin-top: 15px;
         }
-        /* Efeito de piscar solicitado */
         @keyframes piscarTexto {
             0% { opacity: 1; }
             50% { opacity: 0.2; }
@@ -147,7 +146,7 @@
 
 <div class="container">
     
-    <!-- Cabeçalho da Campanha com a Imagem moto.png -->
+    <!-- Cabeçalho da Campanha com a imagem moto.png -->
     <div class="card" style="text-align: center; background: #fffde7; border: 2px dashed #ffa000;">
         <img src="moto.png" alt="Campanha AutônomoFácil" style="max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 10px;">
         <h2 style="color: #e65100; margin-bottom: 5px;">Campanha de Indicação Premiada 💸</h2>
@@ -245,9 +244,6 @@
             <li><strong>Organização Setorial:</strong> Estrutura e categoriza uma enorme variedade de profissões, facilitando a navegação e a busca exata pela solução desejada.</li>
             <li><strong>Formalização e Oportunidade:</strong> Permite que trabalhadores autônomos divulguem seu status (seja "Disponível" ou "Em breve"), criando uma rede de suporte econômico para a comunidade e o mercado regional.</li>
         </ul>
-        <p style="background: #f1f8e9; padding: 10px; border-radius: 6px; font-size: 13px;">
-             <em>A Missão do AutônomoFácil é um ecossistema digital inteligente projetado para conectar, validar e impulsionar prestadores de serviços autônomos em escala nacional, impulsionado por uma rede descentralizada de indicadores de campo.</em>
-        </p>
         <div class="audio-controls">
             <button type="button" id="btn-ouvir" style="background-color: #43a047;">🔊 Ouvir Explicação</button>
             <button type="button" id="btn-parar" style="background-color: #e53935;">⏹️ Parar Áudio</button>
@@ -266,10 +262,6 @@
         
         <p style="text-align: center; font-weight: bold; font-size: 16px; margin-bottom: 20px;">
             Priorize Esses Autônomos (Demanda Imediata e Alta Recorrência)
-        </p>
-
-        <p style="color: #555; font-size: 14px; text-align: center; margin-bottom: 15px;">
-            Foque em cadastrar profissionais com alta busca constante na sua região:
         </p>
 
         <ul style="line-height: 1.8; font-size: 15px; background: #fff8e1; padding: 15px 15px 15px 35px; border-radius: 8px; border: 1px dashed #ffa000;">
@@ -294,51 +286,36 @@
             <li>🛋️ <strong>Estofador (Reforma de Sofás)</strong></li>
         </ul>
 
-        <div style="text-align: center; margin-top: 20px; font-size: 13px; color: #666; font-weight: bold;">
-            AutônomoFácil — MT - BR
-        </div>
-
         <button type="button" onclick="fecharModalPrioritarios()" style="background-color: #2e7d32; margin-top: 20px;">Entendido, Fechar</button>
     </div>
 </div>
 
-<!-- Estrutura do Modal do Regulamento -->
+<!-- MODAL DE REGULAMENTO -->
 <div id="modalRegulamento" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6);">
   <div style="background-color: #fefefe; margin: 5% auto; padding: 25px; border: 1px solid #888; width: 90%; max-width: 600px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); font-family: sans-serif;">
-    
-    <!-- Cabeçalho do Modal -->
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
       <h2 style="margin: 0; color: #333; font-size: 20px;">Regras: Campanha de Indicação</h2>
       <span onclick="fecharRegulamento()" style="color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
     </div>
-
-    <!-- Conteúdo do Regulamento -->
     <div style="max-height: 400px; overflow-y: auto; text-align: left; font-size: 14px; color: #444; line-height: 1.6;">
       <p><strong>1. DO OBJETIVO E NATUREZA:</strong> Campanha de incentivo financeiro por indicação efetivada, destinada a premiar os indicadores cadastrados que expandem a rede do AutônomoFácil.</p>
-      
       <p><strong>2. CRITÉRIOS DE EFETIVAÇÃO:</strong><br>
       - A pessoa indicada deve aderir ao aplicativo do AutônomoFácil.<br>
       - Realizar o pagamento da anuidade correspondente.<br>
       - Enviar o comprovante de pagamento tanto para o Indicador quanto para o chat oficial do WhatsApp do AutônomoFácil.<br>
       - Ser maior de 18 anos.</p>
-      
       <p><strong>3. PREMIAÇÃO E GRATIFICAÇÃO:</strong><br>
       - R$ 10,00 pagos via Pix por cada indicação com adesão efetivada e comprovada.<br>
       - Quanto mais indicações válidas você realizar, maior será a sua gratificação total acumulada (sem limite de indicações).</p>
-      
       <p><strong>4. RESPALDO LEGAL:</strong> Fundamentado na livre iniciativa e em promessas de recompensa por desempenho comercial.</p>
     </div>
-
-    <!-- Rodapé do Modal com Botão de Fechar -->
     <div style="text-align: right; margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px;">
       <button onclick="fecharRegulamento()" style="background-color: #6c757d; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Fechar</button>
     </div>
-
   </div>
 </div>
 
 <script>
-    // Funções para abrir e fechar o modal de prioridades
     function abrirModalPrioritarios() {
         document.getElementById('modalPrioritarios').style.display = 'block';
     }
@@ -346,7 +323,6 @@
         document.getElementById('modalPrioritarios').style.display = 'none';
     }
 
-    // Funções do Modal de Regulamento
     function abrirRegulamento() {
         document.getElementById('modalRegulamento').style.display = 'block';
     }
@@ -360,15 +336,11 @@
         }
     }
 
-    // Garante que o script geral só execute após a página carregar 100%
     document.addEventListener('DOMContentLoaded', () => {
-        
-        // Registro do Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./sw.js').catch(() => {});
         }
 
-        // Elementos da interface
         let minhasIndicacoes = JSON.parse(localStorage.getItem('autonomo_indicacoes')) || [];
         let relatorioEnviado = JSON.parse(localStorage.getItem('relatorio_enviado')) || false;
         
@@ -380,7 +352,6 @@
         inputContato.value = localStorage.getItem('ind_contato') || '';
         inputPix.value = localStorage.getItem('ind_pix') || '';
 
-        // Eventos para salvar dados do indicador automaticamente
         [inputNome, inputContato, inputPix].forEach(input => {
             input.addEventListener('input', () => {
                 localStorage.setItem('ind_nome', inputNome.value);
@@ -392,7 +363,6 @@
         renderizarPlacar();
         atualizarEstadoBotaoApp();
 
-        // Cadastro de indicação
         document.getElementById('form-indicacao').addEventListener('submit', (e) => {
             e.preventDefault();
             
@@ -439,7 +409,6 @@
             lista.innerHTML = html;
         }
 
-        // Botão WhatsApp corrigido
         document.getElementById('btn-whatsapp').addEventListener('click', () => {
             const nomeInd = inputNome.value || 'Não informado';
             const contatoInd = inputContato.value || 'Não informado';
@@ -462,7 +431,7 @@
             localStorage.setItem('relatorio_enviado', JSON.stringify(true));
             atualizarEstadoBotaoApp();
 
-            const url = "https://wa.me/5566984662186?text=" + encodeURIComponent(mensagem);
+            const url = "https://wa.me/556684662186?text=" + encodeURIComponent(mensagem);
             window.open(url, '_blank');
         });
 
@@ -490,7 +459,6 @@
             }
         }
 
-        // Funções do Modal de Explicação
         const modal = document.getElementById('modalExplicacao');
         document.getElementById('btn-abrir-modal').addEventListener('click', () => {
             modal.style.display = 'block';
@@ -500,11 +468,10 @@
             pararAudio();
         });
 
-        // Síntese de Voz
         document.getElementById('btn-ouvir').addEventListener('click', () => {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
-                const texto = "O Autônomo Fácil consiste na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma. Elimina intermediários tradicionais, oferecendo vitrine digital para prestadores de serviços, estruturando profissões e criando uma rede de suporte econômico para a comunidade e o mercado regional.";
+                const texto = "O Autônomo Fácil consiste na criação de uma ponte direta, digital e regionalizada entre quem precisa de serviços e quem trabalha de forma autônoma.";
                 const utterance = new SpeechSynthesisUtterance(texto);
                 utterance.lang = 'pt-BR';
                 utterance.rate = 1.0;
